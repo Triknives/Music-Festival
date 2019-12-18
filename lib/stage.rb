@@ -1,15 +1,14 @@
 class Stage
   attr_reader :id
-  attr_accessor :stage_name, :artist, :date, :time_slot
+  attr_accessor :stage_name, :artist, :time_slot
 
   @@stages = {}
   @@total_rows = 0
 
-  def initialize (id, stage_name, artist, date, time_slot)
+  def initialize (id, stage_name, artist, time_slot)
     @id = id || @@total_rows += 1
     @stage_name = stage_name
     @artist = artist
-    @date = date
     @time_slot = time_slot
   end
 
@@ -18,7 +17,7 @@ class Stage
   end
 
   def save
-    @@stages[self.id] = Stage.new(self.id, self.stage_name, self.artist, self.date, self.time_slot)
+    @@stages[self.id] = Stage.new(self.id, self.stage_name, self.artist, self.time_slot)
   end
 
   def ==(stage_to_compare)
@@ -39,13 +38,12 @@ class Stage
   end
 
   def self.sort
-    @@stages.values.sort { |a, b| a.stage_name <=> b.stage_name }
+    @@stages.values.sort { |a, b| a.date <=> b.date }
   end
 
-  def update(stage_name, artist, date, time_slot)
+  def update(stage_name, artist, time_slot)
     @stage_name = (stage_name != '') ? stage_name : @stage_name
     @artist = (artist != '') ? artist : @artist
-    @date = (date != '') ? date : @date
     @time_slot = (time_slot != '') ? time_slot : @time_slot
   end
 
