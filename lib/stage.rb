@@ -22,7 +22,7 @@ class Stage
   end
 
   def ==(stage_to_compare)
-    self.stage_name() == stage_to_compare.stage_name()
+    self.time_slot() == stage_to_compare.time_slot()
   end
 
   def self.clear
