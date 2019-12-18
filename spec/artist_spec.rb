@@ -28,4 +28,16 @@ describe '#Artist' do
       expect(Artist.all).to(eq([artist, artist2]))
     end
   end
+
+  describe ('.clear') do
+    it('clears all artists') do
+      artist = Artist.new("Naima", @stage.id, nil, 1330)
+      artist.save()
+      artist2 = Artist.new("Naima2", @stage.id, nil, 1600)
+      artist2.save()
+      Artist.clear()
+      expect(Artist.all).to(eq([]))
+    end
+
+  end
 end
