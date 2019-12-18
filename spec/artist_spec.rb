@@ -8,7 +8,7 @@ describe '#Artist' do
   before(:each) do
     Stage.clear()
     Artist.clear()
-    @stage = Stage.new(nil, "stage2", "Brett", "13:30")
+    @stage = Stage.new(9, "stage2", "Brett", "13:30")
     @stage.save
   end
 
@@ -72,16 +72,18 @@ describe '#Artist' do
 
   describe('.find_by_stage') do
     it("finds artists for an stage") do
-      stage = Stage.new(nil, 'Forest Stage', 'a', 'b')
-      stage.save
       id = 5
-      artist = Artist.new("Test1", @stage.id, nil, 1600)
+      stage = Stage.new(id, 'Forest Stage', 'a', 'b')
+      stage.save
+      stage2 = Stage.new(10, 'Forest Stage', 'a', 'b')
+      stage2.save
+      artist = Artist.new("Artist_Name1", stage2.id, nil, 1600)
       artist.save()
-      artist2 = Artist.new("Test2", stage.id, nil, 1600)
+      artist2 = Artist.new("Artist_Name2", stage.id, nil, 1600)
       artist2.save()
-      artist3 = Artist.new("Test3", stage.id, nil, 1600)
+      artist3 = Artist.new("Artist_Name3", stage2.id, nil, 1600)
       artist3.save()
-      expect(Artist.find_by_stage(stage.id)).to(eq([artist2, artist3]))
+      expect(Artist.find_by_stage(stage2.id)).to(eq([artist, artist3]))
     end
   end
   describe('#stage') do
