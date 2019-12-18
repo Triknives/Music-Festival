@@ -79,7 +79,6 @@ describe '#Stage' do
       show3.save()
       search_term = 'forest'
       expect(Stage.search(search_term)).to(eq([show, show3]))
-      # expect(show3.stage_name).to(eq("Barn Stage"))
     end
   end
   describe('.sort') do
