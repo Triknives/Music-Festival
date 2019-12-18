@@ -26,9 +26,11 @@ class Artist
   def self.find(artist_id)
     @@artists[artist_id]
   end
-  def update(artist_name, stage_id)
+
+  def update(artist_name, stage_id, time_slot)
     self.artist_name = artist_name
     self.stage_id = stage_id
+    self.time_slot = time_slot
     @@artists[self.artist_id] = Artist.new(self.artist_name, self.stage_id, self.artist_id, self.time_slot)
   end
 

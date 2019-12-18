@@ -47,4 +47,14 @@ describe '#Artist' do
       expect(Artist.all).to(eq([artist]))
     end
   end
+
+  describe('#update') do
+    it("updates an artist by id") do
+      artist = Artist.new("Naima", @stage.id, nil, 1600)
+      artist.save()
+      artist.update("Test", @stage.id, 1200)
+      expect(artist.artist_name).to(eq("Test"))
+      expect(artist.time_slot).to(eq(1200))
+    end
+  end
 end
