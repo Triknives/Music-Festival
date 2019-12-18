@@ -20,7 +20,7 @@ describe '#Artist' do
   end
 
   describe('.all') do
-    it("returns a list of all songs") do
+    it("returns a list of all artists") do
       artist = Artist.new("Naima", @stage.id, nil, 1330)
       artist.save()
       artist2 = Artist.new("Naima2", @stage.id, nil, 1600)
@@ -38,6 +38,13 @@ describe '#Artist' do
       Artist.clear()
       expect(Artist.all).to(eq([]))
     end
+  end
 
+  describe('#save') do
+    it("saves a artist") do
+      artist = Artist.new("Naima2", @stage.id, nil, 1600)
+      artist.save()
+      expect(Artist.all).to(eq([artist]))
+    end
   end
 end
