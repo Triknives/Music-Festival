@@ -1,3 +1,5 @@
+
+require 'pry'
 class Artist
   attr_reader :artist_id
   attr_accessor :artist_name, :stage_id, :time_slot
@@ -35,7 +37,7 @@ class Artist
   end
 
   def delete
-    @@artists.delete(self.artists_id)
+    @@artists.delete(self.artist_id)
   end
 
   def self.clear
