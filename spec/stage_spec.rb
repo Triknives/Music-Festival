@@ -82,14 +82,19 @@ describe '#Stage' do
       # expect(show3.stage_name).to(eq("Barn Stage"))
     end
   end
-  # describe('.sort') do
-  #   it('')
-  #   show = Stage.new(nil, "Forest Stage", "Jason", "13:00")
-  #   show.save()
-  #   show2 = Stage.new(nil, "Forest Stage", "Brett", "13:30")
-  #   show2.save()
-  #   show3 = Stage.new(nil, "Barn Stage", "Jason", "14:30")
-  #   show3.save()
-  #
-  # end
+  describe('.sort') do
+    it('should sort military times') do
+    show = Stage.new(nil, "Forest Stage", "Jason", 1300)
+    show.save()
+    show2 = Stage.new(nil, "Barn Stage", "Jason", 1430)
+    show2.save()
+    show3 = Stage.new(nil, "Forest Stage", "Brett", 1330)
+    show3.save()
+    show4 = Stage.new(nil, "Forest Stage", "Brett", 1325)
+    show4.save()
+    time_slots = [1300, 1200, 1500, 1400, 1100, 1130, 0600, 0602]
+    expect(time_slots.sort()).to(eq([0600,0602, 1100, 1130, 1200, 1300, 1400, 1500]))
+    expect(Stage.sort()).to(eq([show, show4, show3, show2]))
+    end
+  end
 end

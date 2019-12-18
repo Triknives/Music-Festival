@@ -38,7 +38,7 @@ class Stage
   end
 
   def self.sort
-    @@stages.values.sort { |a, b| a.date <=> b.date }
+    @@stages.values.sort { |a, b| a.time_slot <=> b.time_slot }
   end
 
   def update(stage_name, artist, time_slot)
